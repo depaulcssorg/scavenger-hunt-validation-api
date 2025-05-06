@@ -37,10 +37,16 @@ const validate = (event) => {
 	const {task, input} = event.queryStringParameters;
 
 	if(answers[`task${task}`]?.answer === input){
-		return answers[`task${task}`].magicNumber;
+		return {
+			success: true,
+			magicNumber: answers[`task${task}`].magicNumber
+		};
 	}
 	else{
-		return "Invalid input";
+		return {
+			success: false,
+			message: "Invalid input"
+		};
 	}
 }
 
